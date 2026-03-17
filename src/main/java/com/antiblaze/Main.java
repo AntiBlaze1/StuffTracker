@@ -9,12 +9,15 @@ import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.util.Scanner;
 
+import static com.antiblaze.AccessDatabase.getRepo;
+import static com.antiblaze.AccessDatabase.getReposFromDB;
 import static com.antiblaze.ConsoleCommands.doCommand;
 import static com.antiblaze.Constants.stopServerDelay;
 
 public class Main {
     private static HttpServer server;
     public static void main(String[] args) {
+        getReposFromDB();
         new Thread(()->
         {
             try {
@@ -28,6 +31,7 @@ public class Main {
 
         new Thread(()->
         {
+            System.out.println(getRepo("foo").getName());
             Scanner scanner=new Scanner(System.in);
             final String message= """
                     ==================================================
