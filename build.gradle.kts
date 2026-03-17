@@ -22,3 +22,7 @@ tasks.test {
 application {
     mainClass="com.antiblaze.Main"
 }
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
