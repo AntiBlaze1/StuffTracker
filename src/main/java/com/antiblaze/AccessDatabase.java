@@ -29,9 +29,9 @@ public class AccessDatabase {
 
     public static Repo getRepo(String path) {
         String name=path.substring(1).toLowerCase().trim();
-        if (repoNames.contains(path)) {
-//            return new
+        if (repoNames.contains(name)) {
+            return new Repo(name);
         }
-        return new Repo(path);
+        return null;
     }
 }

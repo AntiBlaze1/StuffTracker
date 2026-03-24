@@ -31,7 +31,7 @@ public class Main {
 
         new Thread(()->
         {
-            System.out.println(getRepo("foo").getName());
+//            System.out.println(getRepo("foo").getName());
             Scanner scanner=new Scanner(System.in);
             final String message= """
                     ==================================================
@@ -76,7 +76,13 @@ public class Main {
 //            if (exchange.getRequestURI().getPath())
             System.out.println("path: "+exchange.getRequestURI().getPath());
             InputStream stream = exchange.getRequestBody();
-            System.out.println(new Scanner(stream).nextLine());
+//            System.out.println(new Scanner(stream).nextLine());
+            Repo repo=getRepo(exchange.getRequestURI().getPath());
+            if (repo!=null) {
+                System.out.println("good, is "+repo.getName());
+            } else {
+                System.out.println("its null");
+            }
         }
 
     }
